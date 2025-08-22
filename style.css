@@ -1,0 +1,343 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: Arial, sans-serif; color: #333; background-color: #f9f9f9; }
+
+nav {
+  background: #ffffff;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+nav .logo img { height: 50px; }
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #0462b9;
+  margin-left: auto;
+  position: relative;
+  z-index: 11;
+}
+
+.nav-toggle::before {
+  content: "☰";
+}
+
+.nav-toggle.active::before {
+  content: "✖";
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+}
+.nav-links li a {
+  color: #070707;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: block;
+  padding: 14px 20px;
+}
+.nav-links li a:hover,
+.nav-links li a.active {
+  background-color: #0462b9;
+  color: white;
+}
+
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  background-image: url('ollc.JPG');
+  background-size: cover;
+  background-position: center;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 0;
+}
+.hero h1, .hero p { position: relative; z-index: 1; }
+.hero h1 { font-size: 3rem; margin-bottom: 1rem; }
+.hero p { font-size: 1.2rem; max-width: 600px; }
+
+
+.section { padding: 4rem 2rem; max-width: 1200px; margin: auto; }
+.section h2 { margin-bottom: 1.5rem; color: #2c3e50; }
+
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+.card h3 { margin-bottom: 1rem; color: #2c3e50; }
+.card p { color: #666; }
+
+details { 
+  margin-bottom: 1rem; 
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+details summary { 
+  background: #0462b9;
+  color: white;
+  padding: 12px 16px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
+details ul { 
+  background: #fff;
+  padding: 12px 20px;
+  border-left: 3px solid #0462b9;
+  margin: 0;
+  list-style: disc;
+}
+details[open] summary {
+  background: #0462b9;
+}
+
+
+img, .card img, iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+footer {
+  text-align: center;
+  padding: .05rem;
+  background: #2c3e50;
+  color: white;
+}
+
+
+@media (max-width: 900px) {
+  .section { padding: 2rem 1rem; }
+  .cards { gap: 1rem; }
+}
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1rem; }
+  nav { padding: 1rem; }
+  .cards { grid-template-columns: 1fr; }
+}
+@media (max-width: 600px) {
+  .hero { height: 40vh; padding: 1rem; }
+  .section { padding: 1rem 0.5rem; }
+  .nav-toggle { display: block; }
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    display: none;
+    background: #fff;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  .nav-links.nav-open {
+    display: flex;
+  }
+  nav {
+    position: relative;
+    flex-wrap: wrap;
+  }
+}
+
+.rec-section {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+.rec-section h2 {
+  color: #0462b9;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  text-align: left;
+  letter-spacing: 1px;
+}
+
+.rec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.rec-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.rec-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.13);
+}
+.rec-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background: #eee;
+}
+.rec-info {
+  padding: 1.2rem 1.2rem 1.5rem 1.2rem;
+}
+.rec-info h3 {
+  color: #0462b9;
+  margin-bottom: 0.5rem;
+  font-size: 1.15rem;
+}
+.rec-info p {
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Make the Achievements & Trophies card wider */
+.rec-card.wide {
+  grid-column: span 2;
+}
+@media (max-width: 900px) {
+  .rec-grid {
+    grid-template-columns: 1fr;
+  }
+  .rec-card.wide {
+    grid-column: span 1;
+  }
+}
+
+/* Logo and School Title Styling */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.logo img {
+  height: 55px;
+}
+.school-title {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+.school-title span {
+  font-weight: bold;
+  color: #003366;
+  font-size: 1.15rem;
+  letter-spacing: 1px;
+}
+.school-title small {
+  color: #0462b9;
+  font-size: 0.95rem;
+}
+
+.rec-card.wide img {
+  width: 100%;
+  height: 400px;      /* adjust mo kung gusto mo mas mataas o mababa */
+  object-fit: contain;
+  background: #f5f5f5;
+  display: block;
+  margin: 0 auto;
+}
+
+.img-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+}
+.img-modal.active {
+  display: flex;
+}
+.img-modal img {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+}
+.img-modal-close {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 1001;
+  background: none;
+  border: none;
+}
+
+/* Achievements and Trophies group images layout */
+.trophies-achievements-group {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.trophies-achievements-group img {
+  width: 48%;
+  max-height: 400px;
+  object-fit: contain;
+  background: #f5f5f5;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+@media (max-width: 900px) {
+  .trophies-achievements-group {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .trophies-achievements-group img {
+    width: 100%;
+    max-height: 320px;
+  }
+}

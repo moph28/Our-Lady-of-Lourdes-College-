@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>OLLC Main</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <img src="logo2.jpg" alt="Our Lady of Lourdes College Logo">
+    </div>
+    <button class="nav-toggle" aria-label="Toggle navigation"></button>
+    <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#administration">Administrations</a></li>
+  </ul>
+  </nav>
+
+  <main>
+    <section class="rec-section">
+      <h2>Campus Facilities</h2>
+      <div class="rec-grid">
+        
+        <div class="rec-card wide">
+  <div class="trophies-achievements-group">
+    <img src="trophies.jpg" alt="Achievements and Trophies" class="fullscreenable">
+    <img src="achievements.jpg" alt="Achievements Banner" class="fullscreenable">
+  </div>
+  <div class="rec-info">
+    <h3>Achievements & Trophies</h3>
+    <p>Showcasing the pride of OLLC, our achievements and trophies highlight our excellence in sport competitions</p>
+  </div>
+</div>
+        
+        <div class="rec-card">
+          <img src="library.jpg" alt="Library" class="fullscreenable">
+          <div class="rec-info">
+            <h3>Library</h3>
+            <p>A spacious library with a wide selection of books and resources for students' research and study needs.</p>
+          </div>
+        </div>
+       
+        <div class="rec-card">
+          <img src="comlab.jpg" alt="Computer Laboratory" class="fullscreenable">
+          <div class="rec-info">
+            <h3>Computer Laboratory</h3>
+            <p>Modern computer lab equipped for hands-on learning and digital literacy.</p>
+          </div>
+        </div>
+     
+        <div class="rec-card">
+          <img src="registrar.jpg" alt="Registrar" class="fullscreenable">
+          <div class="rec-info">
+            <h3>Registrar's Office</h3>
+            <p>Efficient and student-friendly registrar's office for all your academic records and enrollment needs.</p>
+          </div>
+        </div>
+       
+        <div class="rec-card">
+          <img src="outdoor benches.jpg" alt="Outdoor Benches" class="fullscreenable">
+          <div class="rec-info">
+            <h3>Outdoor Benches</h3>
+            <p>Colorful benches and tables for students to relax, study, and socialize outdoors.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <div class="img-modal" id="imgModal">
+    <button class="img-modal-close" id="imgModalClose" aria-label="Close">&times;</button>
+    <img src="" alt="Fullscreen Image" id="imgModalImg">
+  </div>
+<footer>
+    &copy; 2025 Our Lady of Lourdes College. All rights reserved.
+  </footer>
+  <script>
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('imgModalImg');
+    const closeBtn = document.getElementById('imgModalClose');
+    document.querySelectorAll('.fullscreenable').forEach(img => {
+      img.addEventListener('click', () => {
+        modal.classList.add('active');
+        modalImg.src = img.src;
+        modalImg.alt = img.alt;
+      });
+    });
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+      modalImg.src = '';
+    });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        modalImg.src = '';
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        modal.classList.remove('active');
+        modalImg.src = '';
+      }
+    });
+  </script>
+  <script>
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  const links = document.querySelectorAll('.nav-links a');
+
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('nav-open');
+    navToggle.classList.toggle('active');
+  });
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('nav-open');
+      navToggle.classList.remove('active');
+    });
+  });
+</script>
+</body>
+</html>
